@@ -1,0 +1,4 @@
+textMessage,OptionType,radioOptions,Options
+Does your Device power on ,radioButtons,Yes,Accept
+Is the Device physically damaged,radioButtons,No,Reject
+Does your Device has a liquid damage,radioButtons,,
