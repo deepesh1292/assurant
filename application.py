@@ -9,10 +9,8 @@ from flask import Flask,request,jsonify
 import pandas as pd
 import os
 from flask_cors import CORS, cross_origin
-path = os.getcwd()
+#path = os.getcwd()
 app = Flask(__name__)
-path = os.getcwd()
-
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/')
@@ -29,27 +27,27 @@ def TradeIn():
         tradeInList=[]
         TradeList =[]
         UpdateList=[]
-        tradeInOptions = pd.read_csv(path+"\\"+"TradeOptions.csv")
+        tradeInOptions = pd.read_csv(path+"/"+"TradeOptions.csv")
         tradeIn = tradeInOptions["TradeOptions"]  
         tradeInList = [x for x in tradeIn if str(x) != 'nan']
         
-        ManufactureOptions = pd.read_csv(path+"\\"+"TradeManufacture.csv")  
+        ManufactureOptions = pd.read_csv(path+"/"+"TradeManufacture.csv")  
         Manufacture = ManufactureOptions["ManufactureName"]  
         ManufactureList = [x for x in Manufacture if str(x) != 'nan']        
         
-        ModelOptions = pd.read_csv(path+"\\"+"TradeModel.csv",encoding= 'unicode_escape')
+        ModelOptions = pd.read_csv(path+"/"+"TradeModel.csv",encoding= 'unicode_escape')
         Model = ModelOptions["ModelNameApple"] 
         Model=Model.append(ModelOptions["ModelNameSamsung"])
         Model=Model.append(ModelOptions["ModelNameGoogle"])
         ModelList = [x for x in Model if str(x) != 'nan']
         
-        MemoryOptions = pd.read_csv(path+"\\"+"TradeMemory.csv",encoding= 'unicode_escape')            
+        MemoryOptions = pd.read_csv(path+"/"+"TradeMemory.csv",encoding= 'unicode_escape')            
         Memory = MemoryOptions["Memorytype"]  
         MemoryList = [x for x in Memory if str(x) != 'nan'] 
         
         if text_data=='home' and request.method == 'POST':    
             
-            tradeInOptions = pd.read_csv(path+"\\"+"TradeOptions.csv")
+            tradeInOptions = pd.read_csv(path+"/"+"TradeOptions.csv")
             tradeIn = tradeInOptions["TradeOptions"]  
             for trade in tradeIn:
                 TradeList.append(trade)
@@ -116,7 +114,7 @@ def TradeIn():
 # Device Condition      
         elif text_data and request.method == 'POST': 
              
-            DeviceCondition = pd.read_csv(path+"\\"+"TradeDeviceCondition.csv")
+            DeviceCondition = pd.read_csv(path+"/"+"TradeDeviceCondition.csv")
             Condition = DeviceCondition["textMessage"]  
             ConditionListMsg = [x for x in Condition if str(x) != 'nan']
             ConditionOptionType = DeviceCondition["OptionType"]  
