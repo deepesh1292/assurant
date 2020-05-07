@@ -9,13 +9,13 @@ from flask import Flask,request,jsonify
 import pandas as pd
 import os
 from flask_cors import CORS, cross_origin
-#path = os.getcwd()
+path = os.getcwd()
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/')
 def welcome():
-	return "working fine!"
+	return path
 
 @app.route('/assurent', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
