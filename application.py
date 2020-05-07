@@ -15,7 +15,10 @@ path = os.getcwd()
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-
+@app.route('/', methods=['POST'])
+@cross_origin(origin='*',headers=['Content-Type'])
+def welcome():
+	return <h1>WORKING FINE!</h1>
 
 @app.route('/assurent', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
